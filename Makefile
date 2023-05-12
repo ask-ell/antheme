@@ -19,7 +19,7 @@ shell: node_modules/time
 
 .PHONY: build
 build: node_modules/time
-	$(run) node yarn build
+	$(run) node yarn build-storybook
 
 .PHONY: clean
 clean:

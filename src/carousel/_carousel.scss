@@ -1,30 +1,35 @@
-@mixin carousel-arrow {
-    position: absolute;
-    background-color: rgba($background-color-light, 0.5);
-    color: $text-color-secondary;
-    height: 3rem;
-    width: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    user-select: none;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all 0.05s linear;
+@import "../common/scss/variables";
+@import "../common/scss/mixins";
 
-    &:hover {
-        font-size: 2.5rem;
-        background-color: rgba($background-color-light, 0);
-    }
-}
-
-.carousel {
+@include component("carousel") {
     position: relative;
+    display: block;
+    width: 100%;
 
-    .carousel-arrow {
-        @include carousel-arrow();
+    img {
+        max-width: 100%;
+    }
+
+    @include component("carousel-arrow") {
+        position: absolute;
+        background-color: rgba($background-color-light, 0.5);
+        color: $text-color-secondary;
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        user-select: none;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.05s linear;
+
+        &:hover {
+                font-size: 2.5rem;
+                background-color: rgba($background-color-light, 0);
+            }
     }
 }

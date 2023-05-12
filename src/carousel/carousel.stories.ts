@@ -15,9 +15,11 @@ export const WithoutInputs = {
   render: () => `<${carouselComponentTag.toString()}></${carouselComponentTag.toString()}>`
 }
 
-const images = [...Array(5).keys()].map((_, index) => new _Image().setSrc(`https://images.pexels.com/photos/266211${index}/pexels-photo-266211${index}.jpeg?auto=compress&cs=tinysrgb&w=1600`));
+const images = [...Array(5).keys()].map((_, index) => ({
+  src: `https://images.pexels.com/photos/266211${index}/pexels-photo-266211${index}.jpeg?auto=compress&cs=tinysrgb&w=1600`
+} as _Image));
 
 export const WithImages = {
   name: 'With images',
-  render: () => `<${carouselComponentTag.toString()} images="${encrypt(images)}"></${carouselComponentTag.toString()}>`
+  render: () => `<${carouselComponentTag.toString()} style="max-width: 500px" images="${encrypt(images)}"></${carouselComponentTag.toString()}>`
 }

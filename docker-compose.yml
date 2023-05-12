@@ -7,4 +7,11 @@ services:
     working_dir: /usr/src/app
     volumes:
       - $PWD:/usr/src/app
-    command: yarn test:watch
+    command: yarn storybook
+    ports:
+      - 3000:3000
+      
+  nginx:
+    image: nginx:1.24.0
+    ports:
+      - 8080:80

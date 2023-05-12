@@ -1,14 +1,18 @@
-import { decrypt } from "../common";
+import { decrypt, inject } from "../common";
 import { CarouselLeftArrow, CarouselRightArrow } from "./arrows";
 import _Image from "./image";
+import { carouselComponentTag } from "./utils";
 
 export default class Carousel extends HTMLElement {
     private index = 0;
     private images = new Array<_Image>();
-    private sourcesLoader: { [key: number]: HTMLImageElement | undefined } = {};
+    private imageDomElement = inject(Window).document.createElement('img');
+    // private sourcesLoader: { [key: number]: _Image } = {};
 
     constructor() {
         super();
+        this.appendChild(this.imageDomElement);
+        this.classList.add(carouselComponentTag.toString());
         const encodedImages = this.getAttribute('images');
         if (!!encodedImages) {
             this.images = decrypt(encodedImages);
@@ -35,16 +39,8 @@ export default class Carousel extends HTMLElement {
     }
 
     private renderIndexedImage() {
-        let imageSource = this.sourcesLoader[this.index];
-        if (!imageSource) {
-            imageSource = document.createElement('img');
-            const image = this.images.find((_, index) => index === this.index);
-            imageSource.src = image['src'];
-            this.sourcesLoader[this.index] = imageSource;
-        }
-
-        this.appendChild(imageSource);
-
+        let imageToLoad = this.images[this.index];
+        this.imageDomElement.src = imageToLoad.src;
         // TODO: fetch prev
         // TODO: fetch next
     }

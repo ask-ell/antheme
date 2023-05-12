@@ -1,4 +1,5 @@
 import { inject } from "../../common";
+import { carouselArrowComponentTag } from "../utils";
 
 export default class CarouselArrow {
     public readonly element: HTMLSpanElement;
@@ -6,7 +7,7 @@ export default class CarouselArrow {
     constructor(symbol: string) {
         const element = inject(Window).document.createElement('span');
         element.innerText = symbol;
-        element.classList.add('carousel-arrow');
+        element.classList.add(carouselArrowComponentTag.toString());
         this.element = element;
     }
 }

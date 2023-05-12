@@ -1,5 +1,5 @@
-# New Typescript and Jest project
-Add a description here.
+# Design System
+Ask'ell Design System.
 
 ## Development
 
