@@ -11,7 +11,7 @@ export default {
 };
 
 export const WithoutInputs = {
-  name: 'Without inputs',
+  name: 'Without images',
   render: () => `<${carouselComponentTag.toString()} width="500px"></${carouselComponentTag.toString()}>`
 }
 
