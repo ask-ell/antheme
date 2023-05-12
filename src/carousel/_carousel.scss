@@ -1,13 +1,13 @@
-@import "../common/scss/variables";
-@import "../common/scss/mixins";
+@import "../common/scss/abstracts/variables";
+@import "../common/scss/abstracts/mixins";
 
 @include component("carousel") {
     position: relative;
     display: block;
-    width: 100%;
 
-    img {
+    @include component("carousel-image") {
         max-width: 100%;
+        max-height: 100%;
     }
 
     @include component("carousel-arrow") {

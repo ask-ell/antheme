@@ -2,7 +2,7 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-@use 'sass:math';
+@use "sass:math";
 
 /**
  * Généré avec Chat GPT
@@ -18,7 +18,7 @@ $text-color-secondary: #8f8f8f;
 $divider-color: #383838;
 
 // Typographie
-$font-family: 'Roboto', sans-serif;
+$font-family: "Roboto", sans-serif;
 $font-size-base: 16px;
 $line-height-base: 1.5;
 $font-weight-light: 300;
@@ -76,16 +76,15 @@ $card-border-width: 1px;
 $card-border-color: #4d4d4d;
 $card-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-
 /// Regular font family
 /// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: "Open Sans", "Helvetica Neue Light", "Helvetica Neue",
+  "Helvetica", "Arial", sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
-
-
+$code-font-stack: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+  "Monaco", monospace !default;
 
 // /// Copy text color
 // /// @type Color
@@ -107,34 +106,21 @@ $mid-grey: rgb(153, 153, 153) !default;
 /// @type Color
 $dark-grey: rgb(68, 68, 68) !default;
 
-
-
-
-
 /// Container's maximum width
 /// @type Length
 $max-width: 1180px !default;
-
-
-
-
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
-  'small': 320px,
-  'medium': 768px,
-  'large': 1024px,
+  "small": 320px,
+  "medium": 768px,
+  "large": 1024px,
 ) !default;
-
-
-
-
-
 
 /// Relative or absolute URL where all assets are served from
 /// @type String
 /// @example scss - When using a CDN
 ///   $base-url: 'https://cdn.example.com/assets/';
-$base-url: '/assets/' !default;
+$base-url: "/assets/" !default;

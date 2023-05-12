@@ -1,18 +1,19 @@
 import { decrypt, inject } from "../common";
 import { CarouselLeftArrow, CarouselRightArrow } from "./arrows";
 import _Image from "./image";
-import { carouselComponentTag } from "./utils";
+import { carouselComponentTag, carouselImageComponentTag } from "./utils";
 
 export default class Carousel extends HTMLElement {
     private index = 0;
     private images = new Array<_Image>();
     private imageDomElement = inject(Window).document.createElement('img');
-    // private sourcesLoader: { [key: number]: _Image } = {};
 
     constructor() {
         super();
+        this.imageDomElement.classList.add(carouselImageComponentTag.toString());
         this.appendChild(this.imageDomElement);
         this.classList.add(carouselComponentTag.toString());
+
         const encodedImages = this.getAttribute('images');
         if (!!encodedImages) {
             this.images = decrypt(encodedImages);

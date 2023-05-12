@@ -6,13 +6,13 @@ import { encrypt } from '../common';
 importCarouselComponent();
 
 export default {
-  title: "Carousel",
+  title: "Components/Carousel",
   component: carouselComponentTag.toString()
 };
 
 export const WithoutInputs = {
   name: 'Without inputs',
-  render: () => `<${carouselComponentTag.toString()}></${carouselComponentTag.toString()}>`
+  render: () => `<${carouselComponentTag.toString()} width="500px"></${carouselComponentTag.toString()}>`
 }
 
 const images = [...Array(5).keys()].map((_, index) => ({
@@ -21,5 +21,5 @@ const images = [...Array(5).keys()].map((_, index) => ({
 
 export const WithImages = {
   name: 'With images',
-  render: () => `<${carouselComponentTag.toString()} style="max-width: 500px" images="${encrypt(images)}"></${carouselComponentTag.toString()}>`
+  render: () => `<${carouselComponentTag.toString()} width="500px" images="${encrypt(images)}"></${carouselComponentTag.toString()}>`
 }
