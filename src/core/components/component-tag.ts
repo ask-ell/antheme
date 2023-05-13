@@ -1,4 +1,4 @@
-import { COMPONENT_TAG_PREFIX } from "../constants";
+import { COMPONENT_TAG_PREFIX } from "../utils";
 
 export default class ComponentTag {
     private value: string;

@@ -1,0 +1,11 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+body {
+  font: normal 125% / 1.4 $font-family;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.15s linear;
+}

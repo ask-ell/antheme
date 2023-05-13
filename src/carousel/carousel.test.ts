@@ -1,18 +1,9 @@
-import { encrypt } from "../core";
+import { encrypt, wait } from "../core";
 import importCarouselComponent from "./bootstrap";
 import Carousel from "./carousel";
 import { imagesMock } from "./carousel.mock";
 import { ShiftAnimationDirection } from "./types";
 import { carouselArrowComponentTag, carouselImageContainerComponentTag } from "./utils";
-
-// TODO: export as global util
-function wait(ms: number) {
-    return new Promise<void>((resolve => {
-        setTimeout(() => {
-            resolve();
-        }, ms)
-    }))
-}
 
 describe(Carousel.name, () => {
     let carousel: Carousel;

@@ -1,0 +1,14 @@
+@import "./theming";
+
+$default-theme: (
+    background-color-light: #1f1f1f,
+    background-color-dark: #0c0c0c,
+    button-border-color: #bb86fc,
+    button-background-color: #bb86fc,
+    button-background-color-hover: #ffffff,
+    primary-color: #bb86fc,
+    text-color: #e9e9e9,
+    text-color-secondary: #8f8f8f
+);
+
+@include apply-theme($default-theme);

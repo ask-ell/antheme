@@ -1,5 +1,5 @@
-@import "../scss/abstracts/variables";
-@import "../scss/abstracts/mixins";
+@import "../styles/abstracts/variables";
+@import "../styles/abstracts/mixins";
 
 @keyframes fromMiddleToLeft {
     from {
@@ -40,11 +40,11 @@
         transform: translateX(0%);
     }
 }
+
 @include component("carousel") {
     position: relative;
     display: block;
-    background-color: $background-color-dark;
-        overflow: hidden;
+    overflow: hidden;
     
         @include component("carousel-image-container") {
             width: 100%;
@@ -82,8 +82,6 @@
 
     @include component("carousel-arrow") {
         position: absolute;
-        background-color: rgba($background-color-light, 0.5);
-        color: $text-color-secondary;
         height: 3rem;
         width: 3rem;
         display: flex;
@@ -99,7 +97,6 @@
 
         &:hover {
             font-size: 2.5rem;
-                background-color: rgba($background-color-light, 0);
             }
     }
 }
