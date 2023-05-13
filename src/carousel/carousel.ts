@@ -1,50 +1,76 @@
-import { decrypt, inject } from "../common";
+import { decrypt, inject, CustomHTMLElement, CustomImage, DomCacheService, OnChanges } from "../core";
 import { CarouselLeftArrow, CarouselRightArrow } from "./arrows";
-import DomCacheService from "./dom-cache-service";
-import _Image from "./image";
-import { carouselComponentTag, carouselImageContainerComponentTag } from "./utils";
+import { ShiftAnimationDirection } from "./types";
+import { carouselComponentTag, carouselImageContainerComponentTag, fromLeftToMiddleAnimationClassName, fromMiddleToLeftAnimationClassName, fromMiddleToRightAnimationClassName, fromRightToMiddleAnimationClassName, hiddenElementClassName } from "./utils";
 
-const hiddenElementClass = `${carouselImageContainerComponentTag.toString()}-hidden`;
-const fromMiddleToLeftAnimationClass = `${carouselImageContainerComponentTag.toString()}-from-middle-to-left`;
-const fromMiddleToRightAnimationClass = `${carouselImageContainerComponentTag.toString()}-from-middle-to-right`;
-const fromLeftToMiddleAnimationClass = `${carouselImageContainerComponentTag.toString()}-from-left-to-middle`;
-const fromRightToMiddleAnimationClass = `${carouselImageContainerComponentTag.toString()}-from-right-to-middle`;
-
-export default class Carousel extends HTMLElement {
+export default class Carousel extends CustomHTMLElement implements OnChanges {
     private currentIndex = 0;
-    private previousIndex = this.currentIndex + 1;
+    private previousIndex = this.currentIndex;
+    private images = new Array<CustomImage>();
     private imageContainers = new Array<HTMLDivElement>();
     private timeOut?: NodeJS.Timeout;
+    private lastShiftAnimationDirection?: ShiftAnimationDirection;
+    static readonly shiftAnimationDuration = 500;
 
     constructor() {
         super();
         this.classList.add(carouselComponentTag.toString());
+        this.inspectImagesAttribute();
+    }
 
+    onChanges() {
+        this.reset();
+        this.inspectImagesAttribute();
+    }
+
+    getPreviousIndex() {
+        return this.previousIndex;
+    }
+
+    getCurrentIndex() {
+        return this.currentIndex;
+    }
+
+    getLastShiftAnimationDirection() {
+        return this.lastShiftAnimationDirection ? this.lastShiftAnimationDirection : ShiftAnimationDirection.UNDEFINED;
+    }
+
+    private inspectImagesAttribute() {
         const encodedImages = this.getAttribute('images');
         if (!!encodedImages) {
-            const images = decrypt<Array<_Image>>(encodedImages);
-            this.createImageContainers(images);
+            this.images = decrypt<Array<CustomImage>>(encodedImages);
+            this.createImageContainers();
         }
     }
 
-    private createImageContainers(images: Array<_Image>) {
-        const imagesPreloaders = new Array<Promise<unknown>>();
+    private reset() {
+        this.innerHTML = '';
+        this.currentIndex = 0;
+        this.previousIndex = this.currentIndex;
+        this.images = new Array<CustomImage>();
+        this.imageContainers = new Array<HTMLDivElement>();
+    }
+
+    private createImageContainers() {
+        const imagesPreloaders = new Array<Promise<void>>();
         const domCacheService = DomCacheService.getInstance();
 
-        images.forEach((image, index) => {
+        this.images.forEach((image, index) => {
             const imageContainer = inject(Window).document.createElement('div');
             imageContainer.classList.add(carouselImageContainerComponentTag.toString());
             if (index != this.currentIndex) {
-                imageContainer.classList.add(hiddenElementClass);
+                imageContainer.classList.add(hiddenElementClassName);
             }
             imageContainer.style.backgroundImage = `url("${image.src}")`
 
             this.imageContainers.push(imageContainer);
             this.appendChild(imageContainer);
 
-            imagesPreloaders.push(domCacheService.preloadImage(image).catch(() => {
+            const imagePreloader = domCacheService.preloadImage(image).catch(() => {
                 this.imageContainers[index].innerText = "Error: unreachable resource"
-            }));
+            });
+
+            imagesPreloaders.push(imagePreloader);
         });
 
         Promise.all(imagesPreloaders);
@@ -61,6 +87,7 @@ export default class Carousel extends HTMLElement {
             if (this.timeOut) {
                 return;
             }
+            this.lastShiftAnimationDirection = ShiftAnimationDirection.RIGHT;
             this.setCurrentIndex(this.currentIndex === 0 ? this.imageContainers.length - 1 : this.currentIndex - 1);
         });
 
@@ -70,6 +97,7 @@ export default class Carousel extends HTMLElement {
             if (this.timeOut) {
                 return;
             }
+            this.lastShiftAnimationDirection = ShiftAnimationDirection.LEFT;
             this.setCurrentIndex(this.currentIndex === this.imageContainers.length - 1 ? 0 : this.currentIndex + 1);
         });
     }
@@ -81,23 +109,33 @@ export default class Carousel extends HTMLElement {
     }
 
     private runAnimations() {
-        this.imageContainers[this.currentIndex].classList.remove(hiddenElementClass);
-        const isToTheRight = this.currentIndex === this.previousIndex + 1 || this.currentIndex === 0 && this.previousIndex === this.imageContainers.length - 1;
+        this.imageContainers[this.currentIndex].classList.remove(hiddenElementClassName);
 
-        const previousImageContainerClass = isToTheRight ? fromMiddleToLeftAnimationClass : fromMiddleToRightAnimationClass;
+        const shiftAnimationDirection = this.getLastShiftAnimationDirection();
+
+        if (shiftAnimationDirection === ShiftAnimationDirection.UNDEFINED) {
+            return;
+        }
+        const isToTheRight = shiftAnimationDirection === ShiftAnimationDirection.RIGHT;
+
+        const previousImageContainerClass = isToTheRight ? fromMiddleToRightAnimationClassName : fromMiddleToLeftAnimationClassName;
         this.imageContainers[this.previousIndex].classList.add(previousImageContainerClass);
 
-        const currentImageContainerClass = isToTheRight ? fromRightToMiddleAnimationClass : fromLeftToMiddleAnimationClass;
+        const currentImageContainerClass = isToTheRight ? fromLeftToMiddleAnimationClassName : fromRightToMiddleAnimationClassName;
         this.imageContainers[this.currentIndex].classList.add(currentImageContainerClass);
 
         this.timeOut = setTimeout(() => {
             this.imageContainers[this.previousIndex].classList.remove(previousImageContainerClass);
-            this.imageContainers[this.previousIndex].classList.add(hiddenElementClass);
+            this.imageContainers[this.previousIndex].classList.add(hiddenElementClassName);
 
             this.imageContainers[this.currentIndex].classList.remove(currentImageContainerClass)
 
-            clearTimeout(this.timeOut);
-            this.timeOut = undefined;
-        }, 500);
+            this.clearTimeOut();
+        }, Carousel.shiftAnimationDuration);
+    }
+
+    private clearTimeOut() {
+        clearTimeout(this.timeOut);
+        this.timeOut = undefined;
     }
 }

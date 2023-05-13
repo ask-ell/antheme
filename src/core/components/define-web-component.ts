@@ -7,5 +7,5 @@ export default function defineWebComponent(componentTag: ComponentTag, _construc
         throw new EvenDefinedComponentError(componentTag);
     }
 
-    inject(Window).customElements.define(componentTag.toString(), _constructor)
+    inject(Window).customElements.define(componentTag.toString(), _constructor);
 }

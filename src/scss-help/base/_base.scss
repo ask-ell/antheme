@@ -1,9 +1,13 @@
-@import "../abstracts/variables";
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
 
+/**
+ * Set up a decent box model on the root element
+ */
 html {
   box-sizing: border-box;
   background-color: $background-color-light;
-  scroll-behavior: smooth;
 }
 
 /**
@@ -20,4 +24,17 @@ html {
 
 h1 {
   margin-top: 0;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: all 0.15s linear;
+
+  @include on-event {
+    color: $button-background-color-hover;
+  }
 }

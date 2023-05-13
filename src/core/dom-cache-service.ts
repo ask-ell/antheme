@@ -1,5 +1,5 @@
-import { ComponentTag, inject } from "../common";
-import _Image from "./image";
+import { ComponentTag, inject } from ".";
+import CustomImage from "./custom-image";
 
 export default class DomCacheService {
     private static instance: DomCacheService;
@@ -20,7 +20,7 @@ export default class DomCacheService {
         return DomCacheService.instance;
     }
 
-    preloadImage({ src }: _Image) {
+    preloadImage({ src }: CustomImage) {
         return new Promise<void>((resolve, reject) => {
             const image = new Image()
             image.onload = () => {

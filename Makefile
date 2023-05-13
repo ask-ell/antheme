@@ -13,6 +13,10 @@ serve: node_modules/time
 test: node_modules/time
 	$(run) node yarn test
 
+.PHONY: test_watch
+test_watch: node_modules/time
+	$(run) node yarn test:watch
+
 .PHONY: shell
 shell: node_modules/time
 	$(run) node /bin/bash

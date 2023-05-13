@@ -1,5 +1,5 @@
 import { carouselComponentTag } from "./utils";
-import { defineWebComponent } from "../common";
+import { defineWebComponent } from "../core";
 import Carousel from "./carousel";
 
 export default function importCarouselComponent() {

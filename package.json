@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "storybook": "storybook dev -p 3000",
     "build-storybook": "storybook build -o docs",
     "postinstall": "husky install"

@@ -1,4 +1,4 @@
-@import "../common/scss/abstracts/mixins";
+@import "../scss/abstracts/mixins";
 
 @include component("button") {
     color: $text-color;

@@ -1,4 +1,4 @@
-import { inject } from "../../common";
+import { inject } from "../../core";
 import Carousel from "../carousel";
 import CarouselArrow from "./carousel-arrow";
 

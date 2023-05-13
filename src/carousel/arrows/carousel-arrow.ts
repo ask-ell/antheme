@@ -1,4 +1,4 @@
-import { inject } from "../../common";
+import { inject } from "../../core";
 import { carouselArrowComponentTag } from "../utils";
 
 export default class CarouselArrow {
