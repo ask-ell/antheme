@@ -1,6 +1,7 @@
 @use "sass:map";
 @import "../../button/theming";
 @import "../../carousel/theming";
+@import "../../flat/theming";
 
 @mixin apply-theme($theme) {
     html {
@@ -30,4 +31,5 @@
 
     @include apply-button-theming($theme);
     @include apply-carousel-theming($theme);
+    @include apply-flat-theming($theme);
 }

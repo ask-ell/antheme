@@ -1,2 +1,15 @@
 @import "../src/styles/bootstrap";
-@import "../src/styles/themes/default";
+@import "../src/styles/theming/themes/default";
+
+.color-marker {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    $colorPanelSize: 150px;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    height: $colorPanelSize;
+    width: $colorPanelSize;
+    border-radius: 50%;
+    text-align: center;
+}
