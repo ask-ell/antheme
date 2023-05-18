@@ -1,3 +1,3 @@
 export default interface CustomImage {
-    src: string;
+  src: string
 }

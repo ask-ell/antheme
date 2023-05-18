@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-make build && git add .
+make format && \
+make lint && \
+make build && \
+git add .

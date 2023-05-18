@@ -1,7 +1,7 @@
-import { carouselComponentTag } from "./utils";
-import { defineWebComponent } from "../core";
-import Carousel from "./carousel";
+import { carouselComponentTag } from './utils'
+import { defineWebComponent } from '../core'
+import Carousel from './carousel'
 
-export default function importCarouselComponent() {
-    defineWebComponent(carouselComponentTag, Carousel);
+export default function importCarouselComponent(): void {
+  defineWebComponent(carouselComponentTag, Carousel)
 }

@@ -1,9 +1,21 @@
 compose := docker compose
-run := $(compose) run --rm -T
+run := $(compose) run --rm
 
 node_modules/time:
-	$(run) node yarn
+	$(run) -T node yarn
 	touch node_modules/time
+
+.PHONY: shell
+shell:
+	$(run) node /bin/bash
+
+.PHONY: format
+format: node_modules/time
+	$(run) -T -v ~/.gitconfig:/home/node/.gitconfig node yarn format
+
+.PHONY: lint
+lint: node_modules/time
+	$(run) -T node yarn lint
 
 .PHONY: serve
 serve: node_modules/time
@@ -17,13 +29,9 @@ test: node_modules/time
 test_watch: node_modules/time
 	$(run) node yarn test:watch
 
-.PHONY: shell
-shell: node_modules/time
-	$(run) node /bin/bash
-
 .PHONY: build
 build: node_modules/time
-	$(run) node yarn build-storybook
+	$(run) -T node yarn build
 
 .PHONY: clean
 clean:

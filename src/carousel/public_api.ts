@@ -1,5 +1,3 @@
-import importCarouselComponent from "./bootstrap";
+import importCarouselComponent from './bootstrap'
 
-export {
-    importCarouselComponent
-}
+export { importCarouselComponent }

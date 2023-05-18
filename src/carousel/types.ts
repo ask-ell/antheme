@@ -1,5 +1,5 @@
 export enum ShiftAnimationDirection {
-    UNDEFINED,
-    LEFT,
-    RIGHT
+  UNDEFINED,
+  LEFT,
+  RIGHT,
 }

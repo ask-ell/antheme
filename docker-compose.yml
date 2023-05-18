@@ -7,7 +7,7 @@ services:
     working_dir: /usr/src/app
     volumes:
       - $PWD:/usr/src/app
-    command: yarn storybook
+    command: yarn serve
     ports:
       - 3000:3000
       

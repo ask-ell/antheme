@@ -1,3 +1,3 @@
-import { ComponentTag } from "../core";
+import { ComponentTag } from '../core'
 
-export const buttonComponentTag = new ComponentTag('button');
+export const buttonComponentTag = new ComponentTag('button')

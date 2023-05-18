@@ -1,3 +1,3 @@
-export function inject(_token: unknown) {
-    return window;
+export function inject(_token: unknown): Window {
+  return window
 }
