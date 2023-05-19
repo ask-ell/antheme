@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used to test integration</title>
+    <link rel="stylesheet" href="./dist/themes/default.css">
+</head>
+
+<body>
+    <h1>Carousel</h1>
+    <button class="antheme-button">Click on me</button>
+    <antheme-carousel style="height: 500px; width: 100%"></antheme-carousel>
+    <script src="./dist/core/bundle.js"></script>
+    <script src="./dist/carousel/bundle.js"></script>
+    <script>
+                const carousel = document.querySelector('antheme-carousel');
+
+                function imageFactory(_, index) {
+                    return {
+                        src: `https://images.pexels.com/photos/266211${index}/pexels-photo-266211${index}.jpeg?auto=compress&cs=tinysrgb&w=1600`
+                    }
+                }
+                const imagesMock = [...Array(3).keys()].map(imageFactory)
+                const encryptedImages = antheme.encrypt(imagesMock)
+                carousel.setAttribute('images', encryptedImages);
+                carousel.onChanges();
+    </script>
+</body>
+
+</html>

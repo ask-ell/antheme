@@ -1,0 +1,3 @@
+import { importCarouselComponent } from '.'
+
+importCarouselComponent()

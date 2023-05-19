@@ -1,1 +1,1 @@
-export const COMPONENT_TAG_PREFIX = 'ask-ell';
+export const COMPONENT_TAG_PREFIX = 'antheme';

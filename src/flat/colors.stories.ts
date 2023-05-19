@@ -1,3 +1,5 @@
+import { flatComponentTag } from './utils'
+
 export default {
   title: 'Core/Colors'
 }
@@ -23,7 +25,7 @@ export const Colors = {
     colorLabels
       .map(
         (label) =>
-          `<div class='color-marker ask-ell-flat-${getClassFromColorLabel(
+          `<div class='color-marker ${flatComponentTag.toString()}-${getClassFromColorLabel(
             label
           )}'>${label}</div>`
       )

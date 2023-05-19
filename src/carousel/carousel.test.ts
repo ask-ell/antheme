@@ -1,4 +1,4 @@
-import { encrypt, wait } from '../core'
+import { encrypt, wait, ElementsFinder } from '../core'
 import importCarouselComponent from './bootstrap'
 import Carousel from './carousel'
 import { imagesMock } from './carousel.mock'
@@ -10,15 +10,17 @@ import {
 
 describe(Carousel.name, () => {
   let carousel: Carousel
+  let elementsFinder: ElementsFinder
 
   beforeAll(() => {
     importCarouselComponent()
     carousel = new Carousel()
+    elementsFinder = new ElementsFinder(carousel)
   })
 
   describe('Without images', () => {
     it('Should arrows be hidden', () => {
-      const arrows = carousel.findElementsByComponentTag(
+      const arrows = elementsFinder.findByComponentTag(
         carouselArrowComponentTag
       )
       expect(arrows.length).toBe(0)
@@ -32,7 +34,7 @@ describe(Carousel.name, () => {
     })
 
     it('Should arrows be hidden', () => {
-      const arrows = carousel.findElementsByComponentTag(
+      const arrows = elementsFinder.findByComponentTag(
         carouselArrowComponentTag
       )
       expect(arrows.length).toBe(0)
@@ -45,7 +47,7 @@ describe(Carousel.name, () => {
     beforeAll(() => {
       carousel.setAttribute('images', encrypt(imagesMock))
       carousel.onChanges()
-      arrows = carousel.findElementsByComponentTag(carouselArrowComponentTag)
+      arrows = elementsFinder.findByComponentTag(carouselArrowComponentTag)
     })
 
     it('Should arrows be visible', () => {
@@ -53,7 +55,7 @@ describe(Carousel.name, () => {
     })
 
     it('Should images be loaded', () => {
-      const imageContainers = carousel.findElementsByComponentTag(
+      const imageContainers = elementsFinder.findByComponentTag(
         carouselImageContainerComponentTag
       )
       expect(imageContainers.length).toBe(imagesMock.length)
@@ -126,7 +128,7 @@ describe(Carousel.name, () => {
           encrypt([imagesMock[0], imagesMock[1]])
         )
         carousel.onChanges()
-        arrows = carousel.findElementsByComponentTag(carouselArrowComponentTag)
+        arrows = elementsFinder.findByComponentTag(carouselArrowComponentTag)
       })
 
       describe('When user clicks on the right arrow', () => {

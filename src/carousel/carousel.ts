@@ -1,7 +1,6 @@
 import {
   decrypt,
   inject,
-  AnthemeHTMLElement,
   type AnthemeImage,
   DomCacheService,
   type OnChanges
@@ -18,7 +17,7 @@ import {
   hiddenElementClassName
 } from './utils'
 
-export default class Carousel extends AnthemeHTMLElement implements OnChanges {
+export default class Carousel extends HTMLElement implements OnChanges {
   private currentIndex = 0
   private previousIndex = this.currentIndex
   private images = new Array<AnthemeImage>()

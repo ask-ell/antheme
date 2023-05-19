@@ -9,9 +9,7 @@ export default class DomCacheService {
   )
 
   private constructor() {
-    this.cache.style.position = 'absolute'
-    this.cache.style.zIndex = '-1000'
-    this.cache.style.opacity = '0'
+    this.cache.style.display = 'none'
     inject(Window).document.body.appendChild(this.cache)
   }
 

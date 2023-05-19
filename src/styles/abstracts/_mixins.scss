@@ -40,7 +40,7 @@
 
 
 @mixin component($componentName) {
-  .ask-ell-#{$componentName} {
+  .antheme-#{$componentName} {
     @content;
   }
 }
