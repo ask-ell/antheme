@@ -11,7 +11,7 @@
 
     @include component('flat-button-background-color-hover') {
         background-color: map.get($theme, 'button-background-color-hover');
-        color: map.get($theme, 'text-color-secondary');
+        color: map.get($theme, 'background-color-light');
     }
 
     @include component('flat-primary-color') {
