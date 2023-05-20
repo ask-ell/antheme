@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import "../styles/abstracts/variables";
 @import "../styles/abstracts/mixins";
 
@@ -82,13 +83,13 @@
 
     @include component("carousel-arrow") {
         position: absolute;
-        height: 3rem;
-        width: 3rem;
+        height: calc($icon-font-size * 2);
+            width: calc($icon-font-size * 2);
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        font-size: 1.5rem;
+        font-size: $icon-font-size;
         cursor: pointer;
         user-select: none;
         top: 50%;
@@ -96,7 +97,7 @@
         transition: all 0.05s linear;
 
         &:hover {
-            font-size: 2.5rem;
+            font-size: calc($icon-font-size + $padding);
             }
     }
 }

@@ -1,8 +1,9 @@
 @import "../styles/abstracts/mixins";
+@import "../styles/abstracts/variables";
 
 @include component("button") {
-    border-radius: 0.25rem;
-    padding: 1rem;
+    border-radius: $border-radius;
+        padding: $padding;
     display: block;
     width: max-content;
     transition: all 0.15s linear;

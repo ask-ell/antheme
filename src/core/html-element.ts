@@ -1,6 +1,6 @@
 import { type ComponentTag } from './components'
 
-export default abstract class CustomHTMLElement extends HTMLElement {
+export default abstract class AskellHTMLElement extends HTMLElement {
   findElementsByComponentTag(
     componentTag: ComponentTag
   ): NodeListOf<HTMLElement> {
