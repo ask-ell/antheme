@@ -31,8 +31,11 @@ test_watch: node_modules/time
 
 .PHONY: build
 build: node_modules/time
-# $(run) -T storybook yarn build:storybook
 	$(run) -T storybook yarn build:project
+
+.PHONY: build_doc
+build_doc: node_modules/time
+	$(run) -T storybook yarn build:storybook
 
 .PHONY: clean
 clean:
