@@ -1,7 +1,7 @@
 {
   "name": "@ask-ell/antheme",
   "description": "Design system and components library created by Ask'ell",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "build:project": "rm -rf dist && webpack && sass --style compressed src/styles/theming/themes/_default.scss:dist/themes/default.css",

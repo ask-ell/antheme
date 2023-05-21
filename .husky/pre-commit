@@ -3,5 +3,5 @@
 
 make format && \
 make lint && \
-make build_doc && \
+make build_documentation && \
 git add .

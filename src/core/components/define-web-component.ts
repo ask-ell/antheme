@@ -11,5 +11,4 @@ export default function defineWebComponent(
   }
 
   inject(Window).customElements.define(componentTag.toString(), _constructor);
-  console.log(inject(Window).customElements.get(componentTag.toString()));
 }
