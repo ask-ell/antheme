@@ -1,6 +1,6 @@
 {
-  "name": "@ask-ell/jest-typescript-starter",
-  "description": "Blank project with Typescript and Jest pre-configured",
+  "name": "@ask-ell/antheme",
+  "description": "Design system and components library created by Ask'ell",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

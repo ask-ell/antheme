@@ -1,5 +1,5 @@
 import { ComponentTag, inject } from '.'
-import type AskellImage from './image'
+import type AnthemeImage from './image'
 
 export default class DomCacheService {
   private static instance?: DomCacheService
@@ -22,7 +22,7 @@ export default class DomCacheService {
     return DomCacheService.instance
   }
 
-  async preloadImage({ src }: AskellImage): Promise<void> {
+  async preloadImage({ src }: AnthemeImage): Promise<void> {
     await new Promise<void>((resolve, reject) => {
       const image = new Image()
       image.onload = () => {

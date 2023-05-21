@@ -1,8 +1,8 @@
 import {
   decrypt,
   inject,
-  AskellHTMLElement,
-  type AskellImage,
+  AnthemeHTMLElement,
+  type AnthemeImage,
   DomCacheService,
   type OnChanges
 } from '../core'
@@ -18,10 +18,10 @@ import {
   hiddenElementClassName
 } from './utils'
 
-export default class Carousel extends AskellHTMLElement implements OnChanges {
+export default class Carousel extends AnthemeHTMLElement implements OnChanges {
   private currentIndex = 0
   private previousIndex = this.currentIndex
-  private images = new Array<AskellImage>()
+  private images = new Array<AnthemeImage>()
   private imageContainers = new Array<HTMLDivElement>()
   private timeOut?: NodeJS.Timeout
   private lastShiftAnimationDirection?: ShiftAnimationDirection
@@ -56,7 +56,7 @@ export default class Carousel extends AskellHTMLElement implements OnChanges {
   private inspectImagesAttribute(): void {
     const encodedImages = this.getAttribute('images')
     if (encodedImages !== null) {
-      this.images = decrypt<AskellImage[]>(encodedImages)
+      this.images = decrypt<AnthemeImage[]>(encodedImages)
       this.createImageContainers()
     }
   }
@@ -65,7 +65,7 @@ export default class Carousel extends AskellHTMLElement implements OnChanges {
     this.innerHTML = ''
     this.currentIndex = 0
     this.previousIndex = this.currentIndex
-    this.images = new Array<AskellImage>()
+    this.images = new Array<AnthemeImage>()
     this.imageContainers = new Array<HTMLDivElement>()
   }
 

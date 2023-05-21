@@ -1,3 +1,3 @@
-export default interface AskellImage {
+export default interface AnthemeImage {
   src: string
 }

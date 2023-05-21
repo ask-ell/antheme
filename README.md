@@ -1,5 +1,5 @@
-# Design System
-Ask'ell Design System.
+# Antheme
+Design system and components library created by [Ask'ell](https://ask-ell.com).
 
 ## Development
 
