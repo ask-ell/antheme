@@ -1,3 +1,0 @@
-import { importCarouselComponent } from '.'
-
-importCarouselComponent()
