@@ -23,10 +23,10 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: yarn
+        run: make
 
       - name: Build Storybook
-        run: yarn build:storybook
+        run: make build_documentation
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
