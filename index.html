@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Used to test integration</title>
+    <title>Page used to test integration</title>
     <link rel="stylesheet" href="./dist/themes/default.css">
 </head>
 
@@ -20,7 +20,8 @@
     <script src="./dist/core/bundle.js"></script>
     <script src="./dist/carousel/bundle.js"></script>
     <script>
-            const carousel = document.querySelector('antheme-carousel');
+        function main() {
+        const carousel = document.querySelector('antheme-carousel');
 
             function imageFactory(_, index) {
                 return {
@@ -31,6 +32,8 @@
             const encryptedImages = antheme.encrypt(imagesMock)
             carousel.setAttribute('images', encryptedImages);
             carousel.onChanges();
+        }
+        main()
     </script>
 </body>
 
