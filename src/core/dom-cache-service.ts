@@ -14,7 +14,7 @@ export default class DomCacheService {
   }
 
   static getInstance(): DomCacheService {
-    if (DomCacheService.instance == null) {
+    if (DomCacheService.instance === undefined) {
       DomCacheService.instance = new DomCacheService()
     }
     return DomCacheService.instance

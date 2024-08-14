@@ -69,7 +69,6 @@ export default class Carousel extends HTMLElement implements OnChanges {
   }
 
   private createImageContainers(): void {
-    const imagesPreloaders = new Array<Promise<void>>()
     const domCacheService = DomCacheService.getInstance()
 
     this.images.forEach((image, index) => {
@@ -85,14 +84,10 @@ export default class Carousel extends HTMLElement implements OnChanges {
       this.imageContainers.push(imageContainer)
       this.appendChild(imageContainer)
 
-      const imagePreloader = domCacheService.preloadImage(image).catch(() => {
+      domCacheService.preloadImage(image).catch(() => {
         this.imageContainers[index].innerText = 'Error: unreachable resource'
       })
-
-      imagesPreloaders.push(imagePreloader)
     })
-
-    Promise.all(imagesPreloaders)
 
     if (this.imageContainers.length > 1) {
       this.createArrows()

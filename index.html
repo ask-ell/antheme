@@ -10,23 +10,27 @@
 </head>
 
 <body>
-    <h1>Carousel</h1>
-    <button class="antheme-button">Click on me</button>
-    <antheme-carousel style="height: 500px; width: 100%"></antheme-carousel>
+    <main class="antheme-container">
+        <h1>Components</h1>
+        <h2>Button</h2>
+        <button class="antheme-button">Click on me</button>
+        <h2>Carousel</h2>
+        <antheme-carousel style="height: 500px; width: 100%"></antheme-carousel>
+    </main>
     <script src="./dist/core/bundle.js"></script>
     <script src="./dist/carousel/bundle.js"></script>
     <script>
-                const carousel = document.querySelector('antheme-carousel');
+            const carousel = document.querySelector('antheme-carousel');
 
-                function imageFactory(_, index) {
-                    return {
-                        src: `https://images.pexels.com/photos/266211${index}/pexels-photo-266211${index}.jpeg?auto=compress&cs=tinysrgb&w=1600`
-                    }
+            function imageFactory(_, index) {
+                return {
+                    src: `https://images.pexels.com/photos/266211${index}/pexels-photo-266211${index}.jpeg?auto=compress&cs=tinysrgb&w=1600`
                 }
-                const imagesMock = [...Array(3).keys()].map(imageFactory)
-                const encryptedImages = antheme.encrypt(imagesMock)
-                carousel.setAttribute('images', encryptedImages);
-                carousel.onChanges();
+            }
+            const imagesMock = [...Array(3).keys()].map(imageFactory)
+            const encryptedImages = antheme.encrypt(imagesMock)
+            carousel.setAttribute('images', encryptedImages);
+            carousel.onChanges();
     </script>
 </body>
 
