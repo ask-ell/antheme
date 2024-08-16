@@ -2,21 +2,19 @@ version: "3"
 
 services:
   storybook:
-    image: node:16
-    user: node
-    working_dir: /usr/src/app
+    image: node:20
+    working_dir: /home/node/storybook
     volumes:
-      - $PWD:/usr/src/app
+      - $PWD:/home/node/storybook
     command: yarn serve:storybook
     ports:
       - 3000:3000
 
   integration:
-    image: node:16
-    user: node
-    working_dir: /usr/src/app
+    image: node:20
+    working_dir: /home/node/app
     volumes:
-      - $PWD:/usr/src/app
+      - $PWD:/home/node/app
     command: yarn serve:integration
     ports:
       - 4000:4000
