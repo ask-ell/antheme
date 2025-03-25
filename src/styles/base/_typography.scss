@@ -1,11 +1,16 @@
 @import "../abstracts/variables";
 @import "../abstracts/mixins";
 
-body {
-  font: normal 125% / 1.4 $font-family;
-}
+@include component('html') {
+  font-size: 16px;
+  font-style: normal;
+  
+    * {
+      font-family: $font-family;
+    }
 
-a {
-  text-decoration: none;
-  transition: all 0.15s linear;
+  a {
+    text-decoration: none;
+    transition: all 0.15s linear;
+  }
 }

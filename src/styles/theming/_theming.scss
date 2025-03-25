@@ -1,35 +1,35 @@
 @use "sass:map";
+@import "../abstracts/mixins";
 @import "../../button/theming";
 @import "../../carousel/theming";
 @import "../../flat/theming";
 
 @mixin apply-theme($theme) {
-    html {
-        background-color: map.get($theme, "background-color-light");
-    }
-
-    body {
-        color: map.get($theme, "text-color");
-    }
-
-    h3 {
-        color: map.get($theme, "text-color-secondary");
-    }
-
-    q {
-        color: map.get($theme, "text-color-secondary");
-    }
-
-    a {
-        color: map.get($theme, "primary-color");
-
-        @include on-event {
-            color: map.get($theme, "button-background-color-hover");
+    @include component('html') {
+        body {
+            background-color: map.get($theme, "background-color-light");
+            color: map.get($theme, "text-color");
         }
 
-    }
+        h3 {
+            color: map.get($theme, "text-color-secondary");
+        }
 
-    @include apply-button-theming($theme);
-    @include apply-carousel-theming($theme);
-    @include apply-flat-theming($theme);
+        q {
+            color: map.get($theme, "text-color-secondary");
+        }
+
+        a {
+            color: map.get($theme, "primary-color");
+
+            @include on-event {
+                color: map.get($theme, "button-background-color-hover");
+            }
+
+        }
+
+        @include apply-button-theming($theme);
+        @include apply-carousel-theming($theme);
+        @include apply-flat-theming($theme);
+    }
 }

@@ -94,7 +94,7 @@
         user-select: none;
         top: 50%;
         transform: translateY(-50%);
-        transition: all 0.05s linear;
+        transition: all 0.1s linear;
 
         &:hover {
             font-size: calc($icon-font-size + $padding);
