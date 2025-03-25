@@ -3,7 +3,7 @@
 
 @include component("button") {
     border-radius: $border-radius;
-        padding: $padding;
+    padding: $padding;
     display: block;
     width: max-content;
     transition: all 0.15s linear;

@@ -1,11 +1,10 @@
-version: "3"
-
 services:
   storybook:
     image: node:20
     working_dir: /home/node/storybook
     volumes:
       - $PWD:/home/node/storybook
+    user: node
     command: yarn serve:storybook
     ports:
       - 3000:3000
@@ -15,6 +14,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - $PWD:/home/node/app
+    user: node
     command: yarn serve:integration
     ports:
       - 4000:4000
@@ -22,6 +22,6 @@ services:
   nginx:
     image: nginx:1.24.0
     volumes:
-      - $PWD/docs:/usr/share/nginx/html
+      - $PWD/storybook-static:/usr/share/nginx/html
     ports:
       - 8080:80
